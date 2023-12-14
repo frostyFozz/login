@@ -17,7 +17,7 @@ export const newUser = async ( reg: Request, res: Response ) => {
         })
     }
     const hashedPassword = await bcrypt.hash( password, 10 );
-
+    
     try{
         // para guardar el usuario en la base de datos
     await User.create({
@@ -57,8 +57,8 @@ export const loginUser = async (reg: Request, res: Response) => {
     // creacion de token
     const token = jwt.sign({
         username: username,
-    },process.env.SECRET_KEY || "nada123");
+    },process.env.SECRET_KEY || "nada123",);
 
-    res.json({token});
+    res.json(token);
 
 }
